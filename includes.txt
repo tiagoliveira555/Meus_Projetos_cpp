@@ -1,0 +1,7 @@
+#include <iomanip>
+
+para editar numeros floats e double
+
+#include <unistd.h>
+
+para usar a função Sleep.
