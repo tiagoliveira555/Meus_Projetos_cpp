@@ -7,8 +7,8 @@ using namespace std;
 int main()
 {
     vector <string> nome, endereco, cpf;
-    string r;
-    char opc, s;
+    string opc, r;
+    char s;
 
     inicio:
     system("clear");
@@ -25,7 +25,7 @@ int main()
     cout << "Sua opção: ";
     cin >> opc;
 
-    if(opc == '0'){
+    if(opc == "0"){
         sair_programa:
         cout << "Deseja sair? [S/N]: ";
         cin >> s;
@@ -43,7 +43,7 @@ int main()
             goto sair_programa;
         }
 
-    }else if(opc == '1'){
+    }else if(opc == "1"){
         inicioCadastro:
         system("clear");
         cout << "-------------------------" << endl;
@@ -79,7 +79,7 @@ int main()
             goto sair_cadastro;
         }
 
-    }else if(opc == '2'){
+    }else if(opc == "2"){
         inicioRelatorio:
         system("clear");
         cout << "-------------------------" << endl;
@@ -108,7 +108,7 @@ int main()
             goto inicioRelatorio;
         }
 
-    }else if(opc == '3'){
+    }else if(opc == "3"){
         inicioPesquisar:
         system("clear");
         cout << "-------------------------" << endl;
@@ -143,7 +143,7 @@ int main()
             goto sair_pesquisar;
         }
 
-    }else if(opc == '4'){
+    }else if(opc == "4"){
         inicioEditar:
         system("clear");
         cout << "-------------------------" << endl;
@@ -199,7 +199,7 @@ int main()
             goto sair_editar;
         }
 
-    }else if(opc == '5'){
+    }else if(opc == "5"){
         system("clear");
         cout << "-------------------------" << endl;
         cout << "          EXCLUIR        " << endl;

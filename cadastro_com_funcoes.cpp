@@ -5,7 +5,7 @@
 using namespace std;
 
 vector <string> nome, endereco, cpf;
-string n, e, c, r;
+string r;
 char s;
 
 void cadastrar();
@@ -19,7 +19,7 @@ void editar();
 void excluir();
 
 int main() {
-    int opc;
+    string opc;
     do{
         system("clear");
         cout << "-------------------------" << endl;
@@ -35,42 +35,40 @@ int main() {
         cout << "Sua opção: ";
         cin >> opc;
 
-        switch(opc){
-            case 0:
-                cout << "Deseja sair realmente? [S/N]: ";
+        if(opc == "0"){
+            do{
+                cout << "Deseja realmente sair [S/N]: ";
                 cin >> s;
                 if(s == 'S' || s == 's'){
                     s = 's';
                     break;
+                }else if(s == 'N' || s == 'n'){
+                    s = 'n';
                 }else{
                     cout << "Opção inválida!" << endl;
                     sleep(1);
                 }
+            }while(s != 'n');
 
-            case 1:
-                cadastrar();
-                break;
+        }else if(opc == "1"){
+            cadastrar();
 
-            case 2:
-                relatorio();
-                break;
+        }else if(opc == "2"){
+            relatorio();
 
-            case 3:
-                pesquisar();
-                break;
+        }else if(opc == "3"){
+            pesquisar();
 
-            case 4:
-                editar();
-                break;
+        }else if(opc == "4"){
+            editar();
 
-            case 5:
-                excluir();
-                break;
+        }else if(opc == "5"){
+            excluir();
 
-            default:
-                cout << "Opção inválida!" << endl;
-                sleep(1);
-                break;
+        }else{
+            cout << "Opção inválida!" << endl;
+            sleep(1);
+
         }
 
     }while(s != 's');
@@ -87,6 +85,8 @@ void cadastrar(){
         cout << "-------------------------" << endl;
         cout << "         CADASTRAR       " << endl;
         cout << "-------------------------" << endl;
+
+        string n, e, c;
 
         cout << "Nome....: ";
         cin.ignore();
@@ -164,13 +164,10 @@ void pesquisar(){
 
         for(int i = 0; i < cpf.size(); i++){
             if(r == nome[i] || r == cpf[i]){
-                cout << "Nome....: " << nome[i] << endl;
+                cout << "\nNome....: " << nome[i] << endl;
                 cout << "Endereço: " << endereco[i] << endl;
                 cout << "CPF.....: " << cpf[i] << endl;
                 cout << "-------------------------" << endl;
-            }else{
-                cout << "Cadastro não encontrado!" << endl;
-                sleep(1);
             }
         }
         cout << "\n[P] Pesquisar | [M] Menu Principal: ";
@@ -203,14 +200,14 @@ void editar(){
 
         for(int i = 0; i < cpf.size(); i++){
             if(r == nome[i] || r == cpf[i]){
-                cout << "Nome....: " << nome[i] << endl;
+                cout << "\nNome....: " << nome[i] << endl;
                 cout << "Endereço: " << endereco[i] << endl;
                 cout << "CPF.....: " << cpf[i] << endl;
                 cout << "-------------------------" << endl;
 
                 string novo_nome, novo_endereco, novo_cpf;
 
-                cout << "[ENTER] para permanecer o valor atual" << endl;
+                cout << "\n[ENTER] para permanecer o valor atual\n" << endl;
 
                 cout << "Novo Nome....: ";
                 getline(cin, novo_nome);
@@ -219,20 +216,21 @@ void editar(){
                 cout << "Novo CPF.....: ";
                 getline(cin, novo_cpf);
 
-                if(novo_nome != ""){
-                    nome[i] = novo_nome;
+                if(novo_nome == "" && novo_endereco == "" && novo_cpf == ""){
+                    cout << "\nNenhum dado alterado!\n" << endl;
+                }else{
+                    if(novo_nome != ""){
+                        nome[i] = novo_nome;
+                    }else if(novo_endereco != ""){
+                        endereco[i] = novo_endereco;
+                    }else if(novo_cpf != ""){
+                        cpf[i] = novo_cpf;
+                    }
+                    cout << "\nDados editados com sucesso!\n" << endl;
                 }
-                if(novo_endereco != ""){
-                    endereco[i] = novo_endereco;
-                }
-                if(novo_cpf != ""){
-                    cpf[i] = novo_cpf;
-                }
-
-                cout << "\nDados editados com sucesso!" << endl;
             }
         }
-        cout << "\n[E] Editar | [M] Menu Principal: ";
+        cout << "[E] Editar | [M] Menu Principal: ";
         sair_editar:
         cin >> s;
 
@@ -261,7 +259,7 @@ void excluir(){
 
         for(int i = 0; i < cpf.size(); i++){
             if(r == nome[i] || r == cpf[i]){
-                cout << "Nome....: " << nome[i] << endl;
+                cout << "\nNome....: " << nome[i] << endl;
                 cout << "Endereço: " << endereco[i] << endl;
                 cout << "CPF.....: " << cpf[i] << endl;
                 cout << "-------------------------" << endl;
